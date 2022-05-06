@@ -20,4 +20,7 @@ export default {
 
 <style lang="scss">
   @import './style/general.scss';
+  #app{
+    height: 100vh;
+  }
 </style>
