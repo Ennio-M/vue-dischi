@@ -6,6 +6,11 @@
                 <option value="">Tutti</option>
                 <option :value="genre" v-for="(genre, index) in genresList" :key="index">{{genre}}</option>
             </select>
+            <p class="text-white m-0">Seleziona un artista</p>
+            <select name="authors" id="authors" v-model="inputAuthor" @change="searchAuthor" class="mx-3 p-2 rounded-3">
+                <option value="">Tutti</option>
+                <option :value="author" v-for="(author, index) in authorsList" :key="index">{{author}}</option>
+            </select>
         </div>
     </div>
 </template>
@@ -15,15 +20,20 @@ export default {
     name: 'AppSearch',
     data() {
         return {
-            inputText: ''
+            inputText: '',
+            inputAuthor: ''
         }
     },
     props: {
-        genresList: Array
+        genresList: Array,
+        authorsList: Array
     },
     methods: {
         search() {
             this.$emit('mySearch', this.inputText);
+        },
+        searchAuthor() {
+            this.$emit('authorSearch', this.inputAuthor);
         }
     }
 }
